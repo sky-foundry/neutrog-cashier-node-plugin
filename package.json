@@ -1,0 +1,25 @@
+{
+  "name": "example-node-cashier-plugin",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "http-signature": "^1.2.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^23.4.0",
+    "nock": "^9.4.2",
+    "superagent": "^3.8.3",
+    "supertest": "^3.1.0"
+  }
+}
