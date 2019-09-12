@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express'
 import httpsig from 'http-signature'
 
-export const verifySignature: RequestHandler = (req, res, next) => {
+const handler: RequestHandler = (req, res, next) => {
   try {
     // verify Cashier's HTTP signature
     // this is required in order to verify that the request originated from Cashier
@@ -12,3 +12,5 @@ export const verifySignature: RequestHandler = (req, res, next) => {
     res.status(401).end()
   }
 }
+
+export default handler
