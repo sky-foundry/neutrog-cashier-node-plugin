@@ -1,7 +1,7 @@
 {
   "name": "example-node-cashier-plugin",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "dist/main.js",
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
@@ -10,16 +10,38 @@
     "express": "^4.16.3",
     "http-signature": "^1.2.0",
     "request": "^2.87.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "shopify-api-node": "^2.23.0"
   },
   "scripts": {
-    "start": "node src/server.js",
+    "clean": "rimraf dist/*",
+    "copy-assets": "ts-node tools/copyAssets",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "tsc": "tsc",
+    "build": "npm-run-all clean lint tsc copy-assets",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node .",
     "test": "jest"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.17.1",
+    "@types/fs-extra": "^8.0.0",
+    "@types/node": "^12.7.5",
+    "@types/request-promise": "^4.1.44",
+    "@types/shelljs": "^0.8.5",
+    "fs-extra": "^8.1.0",
     "jest": "^23.4.0",
     "nock": "^9.4.2",
+    "nodemon": "^1.19.2",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0",
+    "shelljs": "^0.8.3",
     "superagent": "^3.8.3",
-    "supertest": "^3.1.0"
+    "supertest": "^3.1.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
   }
 }
