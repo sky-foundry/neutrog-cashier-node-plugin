@@ -6,6 +6,7 @@ import verifySignature from './middleware/verifySignature'
 
 // Route imports
 import routeCashierEvent from './routes/cashierEvent'
+import routeCheckout from './routes/checkout'
 import routeIndex from './routes/index'
 import routeOauthAuthorize from './routes/oauthAuthorize'
 import routeOauthRedirect from './routes/oauthRedirect'
@@ -21,6 +22,8 @@ app.use(bodyParser.json())
 
 // Routes
 app.get('/', routeIndex)
+
+app.get('/checkout', routeCheckout)
 
 app.get('/widget', routeWidget)
 
