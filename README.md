@@ -1,4 +1,4 @@
-# Example Node Cashier Plugin
+# Neutrog Cashier Plugin
 
 ## Getting started
 
@@ -15,7 +15,7 @@
 
 5. Start the server
     ```
-    $ yarn start
+    $ yarn dev
     ```
 
 ## Running the tests
