@@ -1,4 +1,5 @@
 import Axios from 'axios'
+import { createHmac } from 'crypto'
 import { RequestHandler } from 'express'
 import Shopify from 'shopify-api-node'
 
@@ -148,7 +149,23 @@ const handler: RequestHandler = async (req, res) => {
     ],
   }
 
-  console.log(boldCart)
+  console.log('Bold Cart data', boldCart)
+
+  const hmac = createHmac('sha256', process.env.CASHIER_CLIENT_SECRET)
+    .update(`cart_id=${cartID}:shop=${process.env.SHOPIFY_STORE}.myshopify.com`)
+    .digest('hex')
+
+  const cashierResp = await Axios.get(
+  `https://${process.env.SHOPIFY_STORE}.myshopify.com/cart.js`,
+    {
+      headers: {
+        'X-Bold-Checkout-Access-Token': process.env.CASHIER_API_ACCESS_TOKEN,
+      },
+    }
+  )
+
+  console.log('cashier respon', cashierResp)
+
 }
 
 export default handler
