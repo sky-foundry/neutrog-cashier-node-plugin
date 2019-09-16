@@ -155,83 +155,9 @@ const handler: RequestHandler = async (req, res) => {
     .update(`cart_id=${cartID}:shop=${process.env.SHOPIFY_STORE}.myshopify.com`)
     .digest('hex')
 
-  const data = {
-    client_id: 'e9e5a91e-afa7-498a-ba78-5fbe39ee5bf0',
-      client_secret: '48c76a83b793c5735f93a760640c9737b0af8ac8',
-      // tslint:disable-next-line: object-literal-sort-keys
-      cart: {
-          weight: 100,
-          // tslint:disable-next-line: object-literal-sort-keys
-          item_count: 3,
-          requires_shipping: true,
-          currency: 'CAD',
-          override_shipping: true,
-          line_items: [
-              {
-                  id: 112233,
-                  quantity: 2,
-                  title: 'Product Title',
-                  variant_title: 'Variant Title',
-                  weight: 50,
-                  // tslint:disable-next-line: object-literal-sort-keys
-                  taxable: true,
-                  image: 'https://example.com/thing.jpg',
-                  requires_shipping: true,
-                  price: '2000'
-              },
-              {
-                  id: 112234,
-                  quantity: 1,
-                  title: 'The Thing',
-                  variant_title: 'The Thing - Red',
-                  weight: 50,
-                  // tslint:disable-next-line: object-literal-sort-keys
-                  taxable: false,
-                  image: 'https://example.com/red-thing.png',
-                  requires_shipping: true,
-                  price: 2500
-              }
-          ]
-      },
-      customer: {
-          id: 334455,
-          // tslint:disable-next-line: object-literal-sort-keys
-          email: 'john.smith@boldcommerce.com',
-          first_name: 'John',
-          last_name: 'Smith',
-          addresses: [
-              {
-                  first_name: 'John',
-                  last_name: 'Smith',
-                  // tslint:disable-next-line: object-literal-sort-keys
-                  company: 'Bold Commerce',
-                  address1: '50 Fultz Blvd',
-                  address2: '',
-                  city: 'Winnipeg',
-                  province: 'Manitoba',
-                  country: 'Canada',
-                  zip: 'R3Y 0L6',
-                  country_code: 'CA',
-                  province_code: 'MB',
-                  default: true
-              }
-          ]
-      },
-      shipping_lines: [
-          {
-              display_text: 'Slow Shipping',
-              value: 1000
-          },
-          {
-              display_text: 'Fast Shipping',
-              value: 4000
-          }
-      ]
-  }
-
   const cashierResp = await Axios.post(
     `https://cashier.boldcommerce.com/api/v1/shopify/poo-bah-club.myshopify.com/carts/create_from_json`,
-    data,
+    boldCart,
     {
       headers: {
         'X-Bold-Checkout-Access-Token': process.env.CASHIER_API_ACCESS_TOKEN,
