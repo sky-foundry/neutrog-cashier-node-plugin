@@ -1,7 +1,7 @@
 import { Request } from 'express'
 
 const handleInitializeCheckout = (req: Request) => {
-  console.log('Initialized Checkout event recieved', req.body)
+  console.log('Initialized Checkout event recieved', JSON.parse(req.body))
 
   return [
     {
