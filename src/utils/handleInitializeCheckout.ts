@@ -5,7 +5,11 @@ const handleInitializeCheckout = (req: Request) => {
 
   return [
     {
-      data: req.body.custom_data,
+      // data: req.body.custom_data,
+      data: {
+        first_name: 'John',
+        last_name: 'Doe',
+      },
       type: 'CHANGE_SHIPPING_ADDRESS',
     },
   ]
