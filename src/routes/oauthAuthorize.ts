@@ -30,6 +30,8 @@ const handler: RequestHandler = (req, res) => {
     .then(resp => {
       // TODO: save access_token in order to perform Cashier API calls
 
+      console.log('oAuth Resp', resp)
+
       // at this point the app is free to redirect the user wherever it wants
       // this example redirects back into the Cashier admin
       res.redirect(`https://${domain}/admin/${platform}/${shop}/marketplace`)
