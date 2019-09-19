@@ -1,26 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf8">
-    <title>Node Example Plugin Widget</title>
+  <head>
+    <meta charset="utf8" />
+    <title>Paypal</title>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            parent.postMessage({
-                type: 'checkout/initialize'
-            }, '*');
-            parent.postMessage({
-                type: 'checkout/resize_frame',
-                payload: {
-                    height: 100
-                }
-            }, '*');
-        });
+      document.addEventListener('DOMContentLoaded', function() {
+        parent.postMessage(
+          {
+            type: 'checkout/initialize',
+          },
+          '*'
+        )
+        parent.postMessage(
+          {
+            type: 'checkout/resize_frame',
+            payload: {
+              height: 100,
+            },
+          },
+          '*'
+        )
+      })
     </script>
-</head>
+  </head>
 
-<body>
-    <h1>Hello Cashier</h1>
-</body>
+  <body>
+    <!-- PayPal Logo -->
+    <table border="0" cellpadding="10" cellspacing="0" align="center">
+      <tr>
+        <td align="center"></td>
+      </tr>
+      <tr>
+        <td align="center">
+          <a
+            href="https://www.paypal.com/webapps/mpp/paypal-popup"
+            title="How PayPal Works"
+            onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"
+            ><img
+              src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_74x46.jpg"
+              border="0"
+              alt="PayPal Logo"
+          /></a>
+        </td>
+      </tr>
+    </table>
 
+    <!-- PayPal Logo -->
+  </body>
 </html>
