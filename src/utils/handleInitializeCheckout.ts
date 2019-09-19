@@ -72,7 +72,7 @@ const handleInitializeCheckout = (req: Request) => {
         postal_code: pickupAddress.zipCode,
         province: state,
         province_code: pickupAddress.province,
-        update_billing: true,
+        update_billing: false,
       },
       type: 'CHANGE_SHIPPING_ADDRESS',
     },
