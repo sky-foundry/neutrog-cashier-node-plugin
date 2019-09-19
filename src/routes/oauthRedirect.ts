@@ -11,9 +11,12 @@ const handler: RequestHandler = (req, res) => {
     res.status(400).send('Error: "shop" is required')
   }
 
-  const scope = ['modify_cart', 'provide_shipping_rates', 'modify_shipping_address'].join(
-    ' '
-  )
+  const scope = [
+    'add_payments',
+    'modify_cart',
+    'provide_shipping_rates',
+    'modify_shipping_address',
+  ].join(' ')
 
   res.redirect(
     `https://${domain}/api/v1/${platform}/${shop}/oauth/authorize?client_id=${clientID}&scope=${scope}&response_type=code`

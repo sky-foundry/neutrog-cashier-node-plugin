@@ -1,28 +1,111 @@
 import { Request } from 'express'
 
+interface PickupAddress {
+  address: string
+  city: string
+  country: string
+  name: string
+  province: State
+  storeId: string
+  zipCode: string
+}
+
+// enum State {
+//   NSW = 'New South Wales',
+//   QLD = 'Queensland',
+//   SA = 'South Australia',
+//   TAS = 'Tasmania',
+//   VIC = 'Victoria',
+//   WA = 'Western Australia',
+//   ACT = 'Australian Capital Territory',
+//   NT = 'Northern Territory',
+// }
+
+enum State {
+  'New South Wales' = 'NSW',
+  'Queensland' = 'QLD',
+  'South Australia' = 'SA',
+  'Tasmania' = 'TAS',
+  'Victoria' = 'VIC',
+  'Western Australia' = 'WA',
+  'Australian Capital Territory' = 'ACT',
+  'Northern Territory' = 'NT',
+}
+
+const states = {
+  ACT: 'Australian Capital Territory',
+  NSW: 'New South Wales',
+  NT: 'Northern Territory',
+  QLD: 'Queensland',
+  SA: 'South Australia',
+  TAS: 'Tasmania',
+  VIC: 'Victoria',
+  WA: 'Western Australia',
+}
+
 const handleInitializeCheckout = (req: Request) => {
-  console.log('Initialized Checkout event recieved', JSON.stringify(req.body))
+  // console.log('Initialized Checkout event recieved', JSON.stringify(req.body))
+  const pickupAddress: PickupAddress = JSON.parse(
+    req.body.cart.attributes.addressJson
+  )
+
+  console.log('')
+  console.log('PICKUP ADDRESS RECEIVED:    ', JSON.stringify(pickupAddress))
+  console.log('')
+
+  const state = states[pickupAddress.province] || ''
 
   return [
     {
       // data: req.body.custom_data,
       data: {
-        address: '50 Fultz Blvd',
-        address2: 'Another Address Line',
-        city: 'Winnipeg',
-        company: 'Bold Commerce Ltd',
-        country: 'Canada',
-        country_code: 'CA',
+        address: pickupAddress.address,
+        address2: '',
+        city: pickupAddress.city,
+        company: pickupAddress.name,
+        country: pickupAddress.country,
+        country_code: 'AU',
         different_billing_address: true,
-        first_name: 'John',
-        last_name: 'Doe',
-        phone: '204-678-9087',
-        postal_code: 'R3Y 0L6',
-        province: 'Manitoba',
-        province_code: 'MB',
-        update_billing: true,
+        first_name: 'Neutrog',
+        last_name: 'Shop',
+        phone: '+61 8 8538 3500',
+        postal_code: pickupAddress.zipCode,
+        province: state,
+        province_code: pickupAddress.province,
+        update_billing: false,
       },
       type: 'CHANGE_SHIPPING_ADDRESS',
+    },
+    {
+      data: {
+        frame_origin: process.env.APP_URL,
+        name: 'my_payments_widget',
+        position: 'payments',
+        source: process.env.APP_URL + '/widget',
+        type: 'iframe',
+      },
+      type: 'APP_UPDATE_WIDGET',
+    },
+    {
+      data: {
+        click_hook: 'apply_discount',
+        icon: 'https://via.placeholder.com/50x50.png',
+        name: 'my_discount_widget',
+        position: 'discount',
+        text: 'Discount 5%',
+        type: 'app_hook',
+      },
+      type: 'APP_UPDATE_WIDGET',
+    },
+    {
+      data: {
+        click_hook: 'add_payment',
+        name: 'my_payment_method',
+        position: 'payment_gateway',
+        text: 'Pay via the honor system',
+        type: 'app_hook',
+      },
+      type: 'APP_UPDATE_WIDGET',
     },
   ]
 }

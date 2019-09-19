@@ -143,7 +143,7 @@ const handler: RequestHandler = async (req, res) => {
     customer: customer as BoldCart['customer'],
     shipping_lines: [
       {
-        display_text: 'Pickup',
+        display_text: 'Pickup - Free Shipping',
         value: 0,
       },
     ],
