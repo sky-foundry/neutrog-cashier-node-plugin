@@ -11,7 +11,7 @@ const handler: RequestHandler = (req, res) => {
     res.status(400).send('Error: "shop" is required')
   }
 
-  const scope = ['add_payments', 'modify_cart', 'provide_shipping_rates'].join(
+  const scope = ['modify_cart', 'provide_shipping_rates', 'modify_shipping_address'].join(
     ' '
   )
 
