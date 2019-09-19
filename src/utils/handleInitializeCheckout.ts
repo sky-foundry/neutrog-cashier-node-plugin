@@ -68,7 +68,7 @@ const handleInitializeCheckout = (req: Request) => {
         different_billing_address: true,
         first_name: 'Neutrog',
         last_name: 'Shop',
-        phone: '088-538-3500',
+        phone: '+61 8 8538 3500',
         postal_code: pickupAddress.zipCode,
         province: state,
         province_code: pickupAddress.province,
