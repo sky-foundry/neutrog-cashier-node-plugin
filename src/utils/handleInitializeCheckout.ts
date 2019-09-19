@@ -5,9 +5,42 @@ interface PickupAddress {
   city: string
   country: string
   name: string
-  province: string
+  province: State
   storeId: string
   zipCode: string
+}
+
+// enum State {
+//   NSW = 'New South Wales',
+//   QLD = 'Queensland',
+//   SA = 'South Australia',
+//   TAS = 'Tasmania',
+//   VIC = 'Victoria',
+//   WA = 'Western Australia',
+//   ACT = 'Australian Capital Territory',
+//   NT = 'Northern Territory',
+// }
+
+enum State {
+  'New South Wales' = 'NSW',
+  'Queensland' = 'QLD',
+  'South Australia' = 'SA',
+  'Tasmania' = 'TAS',
+  'Victoria' = 'VIC',
+  'Western Australia' = 'WA',
+  'Australian Capital Territory' = 'ACT',
+  'Northern Territory' = 'NT',
+}
+
+const states = {
+  ACT: 'Australian Capital Territory',
+  NSW: 'New South Wales',
+  NT: 'Northern Territory',
+  QLD: 'Queensland',
+  SA: 'South Australia',
+  TAS: 'Tasmania',
+  VIC: 'Victoria',
+  WA: 'Western Australia',
 }
 
 const handleInitializeCheckout = (req: Request) => {
@@ -20,22 +53,24 @@ const handleInitializeCheckout = (req: Request) => {
   console.log('PICKUP ADDRESS RECEIVED:    ', JSON.stringify(pickupAddress))
   console.log('')
 
+  const state = states[pickupAddress.province] || ''
+
   return [
     {
       // data: req.body.custom_data,
       data: {
         address: pickupAddress.address,
-        // address2: 'Another Address Line',
+        address2: '',
         city: pickupAddress.city,
-        // company: 'Bold Commerce Ltd',
+        company: pickupAddress.name,
         country: pickupAddress.country,
-        // country_code: 'CA',
+        country_code: 'AU',
         different_billing_address: true,
-        first_name: pickupAddress.name,
-        // last_name: 'Doe',
-        // phone: '204-678-9087',
+        first_name: '',
+        last_name: '',
+        phone: '+61 8 8538 3500',
         postal_code: pickupAddress.zipCode,
-        // province: 'Manitoba',
+        province: state,
         province_code: pickupAddress.province,
         update_billing: true,
       },
