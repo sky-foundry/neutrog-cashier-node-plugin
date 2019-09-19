@@ -46,7 +46,7 @@ const states = {
 const handleInitializeCheckout = (req: Request) => {
   // console.log('Initialized Checkout event recieved', JSON.stringify(req.body))
   const pickupAddress: PickupAddress = JSON.parse(
-    req.body.attributes.addressJson
+    req.body.cart.attributes.addressJson
   )
 
   console.log('')
