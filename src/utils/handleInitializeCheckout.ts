@@ -10,17 +10,6 @@ interface PickupAddress {
   zipCode: string
 }
 
-// enum State {
-//   NSW = 'New South Wales',
-//   QLD = 'Queensland',
-//   SA = 'South Australia',
-//   TAS = 'Tasmania',
-//   VIC = 'Victoria',
-//   WA = 'Western Australia',
-//   ACT = 'Australian Capital Territory',
-//   NT = 'Northern Territory',
-// }
-
 enum State {
   'New South Wales' = 'NSW',
   'Queensland' = 'QLD',
@@ -44,7 +33,6 @@ const states = {
 }
 
 const handleInitializeCheckout = (req: Request) => {
-  // console.log('Initialized Checkout event recieved', JSON.stringify(req.body))
   const pickupAddress: PickupAddress = JSON.parse(
     req.body.cart.attributes.addressJson
   )
@@ -57,7 +45,6 @@ const handleInitializeCheckout = (req: Request) => {
 
   return [
     {
-      // data: req.body.custom_data,
       data: {
         address: pickupAddress.address,
         address2: '',
@@ -83,27 +70,6 @@ const handleInitializeCheckout = (req: Request) => {
         position: 'payments',
         source: process.env.APP_URL + '/widget',
         type: 'iframe',
-      },
-      type: 'APP_UPDATE_WIDGET',
-    },
-    {
-      data: {
-        click_hook: 'apply_discount',
-        icon: 'https://via.placeholder.com/50x50.png',
-        name: 'my_discount_widget',
-        position: 'discount',
-        text: 'Discount 5%',
-        type: 'app_hook',
-      },
-      type: 'APP_UPDATE_WIDGET',
-    },
-    {
-      data: {
-        click_hook: 'add_payment',
-        name: 'my_payment_method',
-        position: 'payment_gateway',
-        text: 'Pay via the honor system',
-        type: 'app_hook',
       },
       type: 'APP_UPDATE_WIDGET',
     },

@@ -12,9 +12,7 @@ const handler: RequestHandler = (req, res) => {
   }
 
   const scope = [
-    'add_payments',
     'modify_cart',
-    'provide_shipping_rates',
     'modify_shipping_address',
   ].join(' ')
 

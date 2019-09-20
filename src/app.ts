@@ -6,14 +6,10 @@ import verifySignature from './middleware/verifySignature'
 
 // Route imports
 import routeCashierEvent from './routes/cashierEvent'
-import routeCheckout from './routes/checkout'
 import routeIndex from './routes/index'
 import routeOauthAuthorize from './routes/oauthAuthorize'
 import routeOauthRedirect from './routes/oauthRedirect'
 import routeOauthUninstalled from './routes/oauthUninstalled'
-import routePaymentCapture from './routes/paymentCapture'
-import routePaymentPreauth from './routes/paymentPreauth'
-import routePaymentRefund from './routes/paymentRefund'
 import routeWidget from './routes/widget'
 
 const app = express()
@@ -22,8 +18,6 @@ app.use(bodyParser.json())
 
 // Routes
 app.get('/', routeIndex)
-
-app.get('/checkout', routeCheckout)
 
 app.get('/widget', routeWidget)
 
@@ -41,11 +35,5 @@ app.get('/oauth/authorize', routeOauthAuthorize)
 app.post('/oauth/uninstalled', verifySignature, routeOauthUninstalled)
 
 app.post('/cashier/event', verifySignature, routeCashierEvent)
-
-app.post('/payment/preauth', verifySignature, routePaymentPreauth)
-
-app.post('/payment/capture', verifySignature, routePaymentCapture)
-
-app.post('/payment/refund', verifySignature, routePaymentRefund)
 
 export default app
