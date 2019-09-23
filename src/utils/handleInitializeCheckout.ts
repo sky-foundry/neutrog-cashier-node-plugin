@@ -33,6 +33,9 @@ const states = {
 }
 
 const handleInitializeCheckout = (req: Request) => {
+  console.log('REQUEST BODY:')
+  console.log(JSON.stringify(req.body))
+
   // console.log('')
   // console.log('PICKUP ADDRESS RECEIVED:    ', req.body)
   // console.log('')
