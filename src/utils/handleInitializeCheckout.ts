@@ -38,7 +38,7 @@ const handleInitializeCheckout = (req: Request) => {
   )
 
   console.log('')
-  console.log('PICKUP ADDRESS RECEIVED:    ', JSON.stringify(req.body))
+  console.log('PICKUP ADDRESS RECEIVED:    ', req.body.attributes)
   console.log('')
 
   const state = states[pickupAddress.province] || ''
