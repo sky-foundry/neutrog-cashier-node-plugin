@@ -63,7 +63,7 @@ const handleInitializeCheckout = (req: Request) => {
       data: {
         frame_origin: process.env.APP_URL,
         name: 'my_payments_widget',
-        position: 'price_summary_top',
+        position: 'payments_top',
         source: process.env.APP_URL + '/widget',
         type: 'iframe',
       },
