@@ -59,16 +59,16 @@ const handleInitializeCheckout = (req: Request) => {
       },
       type: 'CHANGE_SHIPPING_ADDRESS',
     },
-    {
-      data: {
-        frame_origin: process.env.APP_URL,
-        name: 'my_payments_widget',
-        position: 'payment_gateway',
-        source: process.env.APP_URL + '/widget',
-        type: 'iframe',
-      },
-      type: 'APP_UPDATE_WIDGET',
-    },
+    // {
+    //   data: {
+    //     frame_origin: process.env.APP_URL,
+    //     name: 'my_payments_widget',
+    //     position: 'payment_gateway',
+    //     source: process.env.APP_URL + '/widget',
+    //     type: 'iframe',
+    //   },
+    //   type: 'APP_UPDATE_WIDGET',
+    // },
   ]
 }
 
