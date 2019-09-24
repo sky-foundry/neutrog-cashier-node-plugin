@@ -1,5 +1,7 @@
 # Neutrog Cashier Plugin
 
+A Heroku based nodejs app that acts as plugin for the BOLD Cashier checkout system that integrates with Shoipfy.
+
 ## Getting started
 
 1. Obtain Cashier client credentials (contact [partners@boldcommerce.com](mailto:partners@boldcommerce.com))
