@@ -33,6 +33,17 @@ const states = {
 }
 
 const handleInitializeCheckout = (req: Request) => {
+
+  // fail gracefully where the request does not have a pick up address
+  if (
+    !req.body &&
+    !req.body.cart &&
+    !req.body.cart.attributes &&
+    !req.body.cart.attributes.Pickup_Store_JSON
+    ) {
+    return []
+  }
+
   const pickupAddress: PickupAddress = JSON.parse(
     req.body.cart.attributes.Pickup_Store_JSON
   )
@@ -59,16 +70,6 @@ const handleInitializeCheckout = (req: Request) => {
       },
       type: 'CHANGE_SHIPPING_ADDRESS',
     },
-    // {
-    //   data: {
-    //     frame_origin: process.env.APP_URL,
-    //     name: 'my_payments_widget',
-    //     position: 'payment_gateway',
-    //     source: process.env.APP_URL + '/widget',
-    //     type: 'iframe',
-    //   },
-    //   type: 'APP_UPDATE_WIDGET',
-    // },
   ]
 }
 
