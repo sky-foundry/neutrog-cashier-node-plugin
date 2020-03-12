@@ -48,6 +48,8 @@ const handleInitializeCheckout = (req: Request) => {
     req.body.cart.attributes.Pickup_Store_JSON
   )
 
+  console.log('pickup address', pickupAddress)
+
   const state = states[pickupAddress.province] || ''
 
   console.log(
