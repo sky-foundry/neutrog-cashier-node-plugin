@@ -48,11 +48,26 @@ const handleInitializeCheckout = (req: Request) => {
     req.body.cart.attributes.Pickup_Store_JSON
   )
 
-  console.log(pickupAddress)
-
   const state = states[pickupAddress.province] || ''
 
-  console.log(state)
+  console.log(
+    {
+      address: pickupAddress.address,
+      address2: '',
+      city: pickupAddress.city,
+      company: pickupAddress.name,
+      country: pickupAddress.country,
+      country_code: 'AU',
+      different_billing_address: true,
+      first_name: 'Neutrog',
+      last_name: 'Shop',
+      phone: '+61 8 8538 3500',
+      postal_code: pickupAddress.zipCode,
+      province: state,
+      province_code: pickupAddress.province,
+      update_billing: false,
+    }
+  )
 
   return [
     {
