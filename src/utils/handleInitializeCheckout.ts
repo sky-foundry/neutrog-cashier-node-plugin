@@ -11,25 +11,25 @@ interface PickupAddress {
 }
 
 enum State {
-  'New South Wales' = 'NSW',
-  'Queensland' = 'QLD',
-  'South Australia' = 'SA',
-  'Tasmania' = 'TAS',
-  'Victoria' = 'VIC',
-  'Western Australia' = 'WA',
-  'Australian Capital Territory' = 'ACT',
-  'Northern Territory' = 'NT',
+  'NSW' = 'New South Wales',
+  'QLD' = 'Queensland',
+  'SA' = 'South Australia',
+  'TAS' = 'Tasmania',
+  'VIC' = 'Victoria',
+  'WA' = 'Western Australia',
+  'ACT' = 'Australian Capital Territory',
+  'NT' = 'Northern Territory',
 }
 
 const states = {
-  ACT: 'Australian Capital Territory',
-  NSW: 'New South Wales',
-  NT: 'Northern Territory',
-  QLD: 'Queensland',
-  SA: 'South Australia',
-  TAS: 'Tasmania',
-  VIC: 'Victoria',
-  WA: 'Western Australia',
+  'Australian Capital Territory': 'ACT',
+  'New South Wales': 'NSW',
+  'Northern Territory': 'NT',
+  'Queensland': 'QLD',
+  'South Australia': 'SA',
+  'Tasmania': 'TAS',
+  'Victoria': 'VIC',
+  'Western Australia': 'WA'
 }
 
 const handleInitializeCheckout = (req: Request) => {
