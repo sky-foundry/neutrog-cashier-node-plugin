@@ -8,6 +8,7 @@ interface PickupAddress {
   province: State
   storeId: string
   zipCode: string
+  phone: string
 }
 
 enum State {
@@ -62,7 +63,7 @@ const handleInitializeCheckout = (req: Request) => {
         different_billing_address: true,
         first_name: 'Neutrog Shop',
         last_name: pickupAddress.storeId,
-        phone: '+61 8 8538 3500',
+        phone: pickupAddress.phone || '+61 8 8538 3500',
         postal_code: pickupAddress.zipCode,
         province: pickupAddress.province,
         province_code: state,
